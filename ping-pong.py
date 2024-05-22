@@ -9,13 +9,10 @@ game = True
 clock = time.Clock()
 FPS = 60
 
+# класс спрайтов (NPS)
 class GameSprite(sprite.Sprite):
     def __init__(self, player_image, player_x, player_y, size_x, size_y, player_speed):
-
        sprite.Sprite.__init__(self)
-
-
-
        self.image = transform.scale(image.load(player_image), (size_x, size_y))
        self.speed = player_speed
        self.rect = self.image.get_rect()
@@ -24,6 +21,7 @@ class GameSprite(sprite.Sprite):
     def reset(self):
         window.blit(self.image, (self.rect.x, self.rect.y))
 
+#класс игрока
 class Player(GameSprite):
     def update_l(self):
         keys = key.get_pressed()
@@ -41,17 +39,18 @@ class Player(GameSprite):
 speed_x = 3
 speed_y = 3
 
+# изображение спрайтов 
 racket1 = Player('platforma.png', 30, 200, 50, 150, 4) 
 racket2 = Player('platforma.png', 520, 200, 50, 150, 4)
 ball = GameSprite('ball.png', 200, 200,  50, 50, 4)
 
+# отображение надписи проигрыш
 font1 = font.Font(None, 35)
 lose1 = font1.render('PLAYER 1 LOSE!', True, (180, 0, 0))
 font2 = font.Font(None, 35)
 lose2 = font1.render('PLAYER 2 LOSE!', True, (180, 0, 0))
 
-finish = False
-
+#гейм цикл
 while game:
     for e in event.get():
         if e.type==QUIT:
