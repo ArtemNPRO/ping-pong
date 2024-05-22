@@ -8,6 +8,7 @@ window.fill(back)
 game = True
 clock = time.Clock()
 FPS = 60
+finish = False
 
 # класс спрайтов (NPS)
 class GameSprite(sprite.Sprite):
